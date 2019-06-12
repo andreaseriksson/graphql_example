@@ -3,7 +3,7 @@
 ## Step by step tutorial on setting up graphql in Phoenix
 
 
-Set Up a new Phoenix app with
+Setup a new Phoenix app with
 
     mix phx.new graphql_example
     cd graphql_example
@@ -17,7 +17,6 @@ We want to be able to create users and login so we can setup authenthication fun
     mix phx.gen.context Authentication User users name:string email:string password_hash:string
 
 Update the migration file so we will only allow unique emails
-
 
     create table(:users) do
       add :name, :string
@@ -436,7 +435,7 @@ Then add the types and resolvers for things. Basically what we want us the norma
 	  end
 	end
 
-And last att the resolvers in the file `lib/graphql_example_web/graphql/resolvers/things.ex`
+And last add the resolvers in the file `lib/graphql_example_web/graphql/resolvers/things.ex`
 
 	defmodule GraphqlExampleWeb.Resolvers.Things do
 	  alias GraphqlExample.Things
@@ -488,18 +487,12 @@ And last att the resolvers in the file `lib/graphql_example_web/graphql/resolver
 	  def delete_thing(_args, _context), do: {:error, "Not Authorized"}
 	end
 
+### Testing
 
 The source code also provides tests. The tests are basically modified controller tests that performs a simulated request to the graphql endpoint.
 
 You can find them [here in this commit](https://github.com/andreaseriksson/graphql_example/commit/f0379fe85a627869617eaec0833429d0ba245536#diff-33fe6b3265a50dcfc224903e14e2dcb4R1)
 
 
-To start your Phoenix server:
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
