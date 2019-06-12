@@ -38,6 +38,22 @@ defmodule GraphqlExample.Things do
   def get_thing!(user, id), do: Repo.get_by!(Thing, id: id, user_id: user.id)
 
   @doc """
+  Gets a single thing.
+
+  Returns nil if the Thing does not exist.
+
+  ## Examples
+
+      iex> get_thing(user, 123)
+      %Thing{}
+
+      iex> get_thing(user, 456)
+      ** nil
+
+  """
+  def get_thing(user, id), do: Repo.get_by(Thing, id: id, user_id: user.id)
+
+  @doc """
   Creates a thing.
 
   ## Examples
